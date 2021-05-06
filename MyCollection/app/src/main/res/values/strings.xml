@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyCollection</string>
+    <string name="passwordHint">password</string>
+    <string name="usernameHint">username</string>
+    <string name="loginBtn">Iniciar sesión</string>
+    <string name="signUp">Crear cuenta</string>
+    <string name="signUpBtn">Crear cuenta</string>
+    <string name="signUpTxt">REGISTRATE</string>
+</resources>
