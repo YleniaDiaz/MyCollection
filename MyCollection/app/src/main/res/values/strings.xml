@@ -6,4 +6,5 @@
     <string name="signUp">Crear cuenta</string>
     <string name="signUpBtn">Crear cuenta</string>
     <string name="signUpTxt">REGISTRATE</string>
+    <string name="addCategoryBtn">Añadir categoría</string>
 </resources>

@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context=".CategoriesActivity">
 
+    <Button
+        android:id="@+id/addCategoryBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addCategoryBtn"
+        />
+
     <ListView
         android:id="@+id/categoriesList"
         android:layout_width="match_parent"
