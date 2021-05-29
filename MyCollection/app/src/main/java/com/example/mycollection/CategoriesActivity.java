@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mycollection.model.Category;
-import com.example.mycollection.model.User;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,16 +23,18 @@ import java.util.ArrayList;
 public class CategoriesActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference dbReference;
-
-    private ArrayList<Category> categories = new ArrayList<>();
+    private final ArrayList<Category> categories = new ArrayList<>();
     ArrayAdapter<Category> arrayAdapterCategories;
-
     ListView categoryListView ;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+
+        Bundle bundle = getIntent().getExtras();
+        username = bundle.getString("user");
 
         categoryListView = findViewById(R.id.categoriesList);
 
@@ -42,7 +43,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
 
         Button addCategoryBtn = findViewById(R.id.addCategoryBtn);
-        addCategoryBtn.setOnClickListener(v -> addCategory(v));
+        addCategoryBtn.setOnClickListener(v -> openDialog());
 
         Toast.makeText(this, "Añadida", Toast.LENGTH_SHORT).show();
     }
@@ -53,13 +54,8 @@ public class CategoriesActivity extends AppCompatActivity {
         dbReference = database.getReference();
     }
 
-    private void addCategory(View v){
-        Category category = new Category("prueba2", null);
-        dbReference.child("ylenia").child("categories").child(category.getName()).setValue(category);
-    }
-
     private void listCategories(){
-        dbReference.child("ylenia").child("categories").addValueEventListener(new ValueEventListener() {
+        dbReference.child("users").child(username).child("categories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
                 categories.clear();
@@ -77,5 +73,10 @@ public class CategoriesActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void openDialog() {
+        AddCategoryDialog dialog = new AddCategoryDialog(username);
+        dialog.show(getSupportFragmentManager(), "Añadir categoría");
     }
 }

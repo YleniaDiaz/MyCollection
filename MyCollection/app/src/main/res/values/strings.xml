@@ -7,4 +7,6 @@
     <string name="signUpBtn">Crear cuenta</string>
     <string name="signUpTxt">REGISTRATE</string>
     <string name="addCategoryBtn">Añadir categoría</string>
+    <string name="new_category_name">Nombre categoría</string>
+    <string name="add_btn_txt">Añadir</string>
 </resources>
